@@ -17,7 +17,7 @@
           <td>{{contact.lastName}}</td>
           <td>{{contact.email}}</td>
           <td>
-            <button @click="selectContact(contact)">Update</button>
+            <button @click="selectContact(contact)">Select</button>
             <button @click="deleteContact(contact.id)">Delete</button>
             
           </td>
@@ -33,7 +33,7 @@
          <input type="text" name="firstName" v-model="firstName"/>
          <input type="text" name="lastName" v-model="lastName"/>
          <input type="text" name="emailName" v-model="email"/>
-         
+         <input v-if="id" type="button" @click="updateContact(id, firstName, lastName, email)" value="Add">
        </form>
   </div>
 </template>
