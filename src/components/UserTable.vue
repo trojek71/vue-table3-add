@@ -17,7 +17,7 @@
           <td>{{contact.lastName}}</td>
           <td>{{contact.email}}</td>
           <td>
-            <button @click="updateContact(contact.id,contact.firstName, contact.lastName,contact.email)">Update</button>
+            <button @click="selectContact(contact)">Update</button>
             <button @click="deleteContact(contact.id)">Delete</button>
             
           </td>
@@ -29,7 +29,10 @@
     </table>
     <form>
          <label>Update contact</label>
+        
+         <input type="text" name="firstName" v-model="firstName"/>
          <input type="text" name="lastName" v-model="lastName"/>
+         <input type="text" name="emailName" v-model="email"/>
          
        </form>
   </div>
@@ -69,7 +72,11 @@ const UPDATE_CONTACT = gql`
   
   data(){
   return {
-          contacts:[]
+          contacts:[],
+          id:null,
+          firstName:'',
+          lastName:'',
+          email:''
   }
 },
 apollo:{
@@ -111,7 +118,7 @@ methods: {
     })
   },
   selectContact(contact){
-           this.id = contact.id;
+          this.id = contact.id;
           this.firstName = contact.firstName;
           this.lastName = contact.lastName;
           this.email = contact.email;
