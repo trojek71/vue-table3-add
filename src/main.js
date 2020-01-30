@@ -11,7 +11,7 @@ import { WebSocketLink } from "apollo-link-ws";
 
 Vue.config.productionTip = false;
 const link = new WebSocketLink({
-  uri: "ws://192.168.66.189:8080/v1/graphql",
+  uri: "ws://trojek.sytes.net:8089/v1/graphql",
   options: {
     reconnect: true,
     timeout: 60000

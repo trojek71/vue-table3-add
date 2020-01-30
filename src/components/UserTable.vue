@@ -33,7 +33,7 @@
          <input type="text" name="firstName" v-model="firstName"/>
          <input type="text" name="lastName" v-model="lastName"/>
          <input type="text" name="emailName" v-model="email"/>
-         <input v-if="id" type="button" @click="updateContact(id, firstName, lastName, email)" value="Add">
+         <input v-if="id" type="button" @click="updateContact(id, firstName, lastName, email)" value="Update">
        </form>
   </div>
 </template>
