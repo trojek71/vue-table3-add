@@ -1,10 +1,11 @@
 <template>
 <div id="user-form">
+    <h4> Add new  contact</h4>
   <form @submit="submit">
     <fieldset>
       <input type="text" placeholder="First Name" v-model="firstName" />
-      <input type="text" placeholder="Director" v-model="lastName" />
-      <input type="text" placeholder="Composer" v-model="email" />
+      <input type="text" placeholder="Last Name" v-model="lastName" />
+      <input type="text" placeholder="email" v-model="email" />
       
     </fieldset>
     <input class="button-primary" type="submit" value="Send" />
