@@ -2,16 +2,18 @@
   <div id="app">
     <h1>Users</h1>
     <user-table />
+    <user-form />
   </div>
 </template>
 
 <script>
 import UserTable from './components/UserTable.vue'
-
+import UserForm  from './components/UserForm'
 export default {
   name: 'app',
   components: {
-    UserTable
+    UserTable,
+    UserForm
   },
 
 
