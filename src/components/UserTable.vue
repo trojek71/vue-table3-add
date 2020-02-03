@@ -7,6 +7,9 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>email</th>
+          <th>City</th>
+          <th>Streeet</th>
+          <th>Country</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -16,6 +19,9 @@
           <td>{{contact.firstName}}</td>
           <td>{{contact.lastName}}</td>
           <td>{{contact.email}}</td>
+          <td>{{contact.address.city}}</td>
+          <td>{{contact.address.street}}</td>
+          <td>{{contact.address.state}}</td>
           <td>
             <button @click="selectContact(contact)">Select</button>
             <button @click="deleteContact(contact.id)">Delete</button>
@@ -55,6 +61,11 @@ const GET_CONTACTS = gql`
       firstName
       lastName
       email
+      address{
+        state
+        city
+        street
+      }
     }
   }
 `;
@@ -72,11 +83,13 @@ const UPDATE_CONTACT = gql`
   
   data(){
   return {
-          contacts:[],
+          contacts:{},
+        
           id:null,
           firstName:'',
           lastName:'',
-          email:''
+          email:'',
+          
   }
 },
 apollo:{
