@@ -10,6 +10,8 @@
           <th>City</th>
           <th>Streeet</th>
           <th>Country</th>
+          <th>House nr</th>
+          <th>Flat nr</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -22,6 +24,8 @@
           <td>{{contact.address.city}}</td>
           <td>{{contact.address.street}}</td>
           <td>{{contact.address.state}}</td>
+          <td>{{contact.address.house_nr}}</td>
+          <td>{{contact.address.flat_nr}}</td>
           <td>
             <button @click="selectContact(contact)">Select</button>
             <button @click="deleteContact(contact.id)">Delete</button>
@@ -65,6 +69,8 @@ const GET_CONTACTS = gql`
         state
         city
         street
+        house_nr
+        flat_nr
       }
     }
   }
@@ -97,7 +103,7 @@ apollo:{
         contacts: {
         query: GET_CONTACTS,
        result(data){
-       this.contacts =data.data.contacts;
+       this.contacts = data.data.contacts;
 }
         }
            
