@@ -23,9 +23,9 @@
           <td>{{contact.email}}</td>
           <td>{{contact.address.city}}</td>
           <td>{{contact.address.street}}</td>
-          <td>{{contact.address.state}}</td>
-          <td>{{contact.address.house_nr}}</td>
-          <td>{{contact.address.flat_nr}}</td>
+          <td>{{contact.address.country}}</td>
+          <td>{{contact.address.nr}}</td>
+         
           <td>
             <button @click="selectContact(contact)">Select</button>
             <button @click="deleteContact(contact.id)">Delete</button>
@@ -52,25 +52,26 @@
 import gql from "graphql-tag";
 
 const DEL_CONTACT = gql`
-   mutation delete_contact($id: Int!) {
-     delete_contacts(where: { id: { _eq: $id } }) {
+   mutation delete_addresses($id: Int!) {
+     delete_addresses(where: { id: { _eq: $id } }) {
        affected_rows
+      
      }
    }
  `;
 const GET_CONTACTS = gql`
   subscription getContacts {
-    contacts {
+    contacts  (order_by: {id: asc}){
       id
       firstName
       lastName
       email
-      address{
-        state
+      address {
+        id
+        country
         city
         street
-        house_nr
-        flat_nr
+        nr
       }
     }
   }
@@ -95,6 +96,7 @@ const UPDATE_CONTACT = gql`
           firstName:'',
           lastName:'',
           email:'',
+           
           
   }
 },
@@ -120,7 +122,8 @@ methods: {
               mutation:  DEL_CONTACT,
               variables:{
                 id: id,
-              },
+                
+                },
             }
           )
       

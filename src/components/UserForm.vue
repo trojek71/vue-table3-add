@@ -78,7 +78,7 @@ export default {
   methods: {
     submit(e) {
       e.preventDefault();
-      const { firstName, lastName, email, state, city, street, house_nr, flat_nr } = this.$data;
+      const { firstName, lastName, email, state, city, street, house_nr, flat_nr,id, } = this.$data;
       this.$apollo.mutate({
         mutation: ADD_CONTACT,
         variables: {
@@ -89,7 +89,9 @@ export default {
           city,
           street,
           house_nr,
-          flat_nr
+          flat_nr,
+          id,
+
         },
       });
     }
