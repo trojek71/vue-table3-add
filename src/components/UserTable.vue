@@ -42,6 +42,10 @@
          <input type="text" name="firstName" v-model="firstName"/>
          <input type="text" name="lastName" v-model="lastName"/>
          <input type="text" name="emailName" v-model="email"/>
+         <input type="text" name="country" v-model="country"/>
+         <input type="text" name="city" v-model="city"/>
+         <input type="text" name="street" v-model="street"/>
+         <input type="number" name="hause number" v-model="email"/>
          <input v-if="id" type="button" @click="updateContact(id, firstName, lastName, email)" value="Update">
        </form>
   </div>
@@ -143,6 +147,10 @@ methods: {
           this.firstName = contact.firstName;
           this.lastName = contact.lastName;
           this.email = contact.email;
+          this.country= contact.address.country;
+          this.city= contact.address.city;
+          this.street= contact.address.street;
+          this.houseNr= contact.address.houseNr;
     },
     clearForm(){
       this.id = null;
