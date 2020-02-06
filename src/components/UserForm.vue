@@ -6,11 +6,11 @@
       <input type="text" placeholder="First Name" v-model="firstName" />
       <input type="text" placeholder="Last Name" v-model="lastName" />
       <input type="text" placeholder="email" v-model="email" />
-      <input type="text" placeholder="state" v-model="state" />
+      <input type="text" placeholder="country" v-model="country" />
       <input type="text" placeholder="city" v-model="city" />
       <input type="text" placeholder="street" v-model="street" />
-      <input type="text" placeholder="house" v-model="house_nr" />
-      <input type="text" placeholder="flat" v-model="flat_nr" />
+      <input type="text" placeholder="house" v-model="houseNr" />
+     
     </fieldset>
     <input class="button-primary" type="submit" value="Send" />
   </form>
@@ -24,11 +24,10 @@ const ADD_CONTACT = gql`
     $firstName: String!
     $lastName: String!
     $email: String!
-    $state: String!
+    $country: String!
     $city: String!
     $street: String!
-    $house_nr: Int!
-    $flat_nr: Int!
+    $houseNr: Int!
    
   ) {
     insert_contacts(
@@ -39,11 +38,11 @@ const ADD_CONTACT = gql`
           email: $email
           address: {
             data:{
-              state: $state
+              country: $country
               city: $city
               street: $street
-              house_nr: $house_nr
-              flat_nr: $flat_nr
+              houseNr: $houseNr
+              
             }
 
           }
@@ -66,11 +65,11 @@ export default {
       firstName: "",
       lastName: "",
       email: "",
-      state: "",
+      country: "",
       city:"",
       street: "",
-      house_nr:"",
-      flat_nr: "",
+      houseNr:"",
+      
       
     };
   },
@@ -78,18 +77,17 @@ export default {
   methods: {
     submit(e) {
       e.preventDefault();
-      const { firstName, lastName, email, state, city, street, house_nr, flat_nr,id, } = this.$data;
+      const { firstName, lastName, email, country, city, street, houseNr, id, } = this.$data;
       this.$apollo.mutate({
         mutation: ADD_CONTACT,
         variables: {
           firstName,
           lastName,
           email,
-          state,
+          country,
           city,
           street,
-          house_nr,
-          flat_nr,
+          houseNr,
           id,
 
         },

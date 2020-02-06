@@ -7,11 +7,10 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>email</th>
-          <th>City</th>
-          <th>Streeet</th>
           <th>Country</th>
+          <th>City</th>
+          <th>Street</th>
           <th>House nr</th>
-          <th>Flat nr</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -21,14 +20,14 @@
           <td>{{contact.firstName}}</td>
           <td>{{contact.lastName}}</td>
           <td>{{contact.email}}</td>
+          <td>{{contact.address.country}}</td>
           <td>{{contact.address.city}}</td>
           <td>{{contact.address.street}}</td>
-          <td>{{contact.address.country}}</td>
-          <td>{{contact.address.nr}}</td>
+          <td>{{contact.address.houseNr}}</td>
          
           <td>
             <button @click="selectContact(contact)">Select</button>
-            <button @click="deleteContact(contact.id)">Delete</button>
+            <button @click="deleteContact(contact.address.id)">Delete</button>
             
           </td>
         </tr>
@@ -52,7 +51,7 @@
 import gql from "graphql-tag";
 
 const DEL_CONTACT = gql`
-   mutation delete_addresses($id: Int!) {
+   mutation delete_addresses($id: uuid!) {
      delete_addresses(where: { id: { _eq: $id } }) {
        affected_rows
       
@@ -71,7 +70,7 @@ const GET_CONTACTS = gql`
         country
         city
         street
-        nr
+        houseNr
       }
     }
   }
