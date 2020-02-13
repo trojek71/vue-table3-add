@@ -99,6 +99,11 @@ const UPDATE_CONTACT = gql`
           firstName:'',
           lastName:'',
           email:'',
+          country:'',
+          city: '',
+          street:'',
+          houseNr:'',
+
            
           
   }
